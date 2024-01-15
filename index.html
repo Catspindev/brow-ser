@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Web Browser</title>
+</head>
+<body>
+
+    <h1>Simple Web Browser</h1>
+
+    <form id="searchForm">
+        <label for="searchQuery">Search:</label>
+        <input type="text" id="searchQuery" name="searchQuery">
+        
+        <label for="searchEngine">Search Engine:</label>
+        <select id="searchEngine" name="searchEngine">
+            <option value="duckduckgo">DuckDuckGo</option>
+            <option value="google">Google</option>
+            <option value="yahoo">Yahoo</option>
+            <option value="bing">Bing</option>
+        </select>
+
+        <button type="button" onclick="search()">Search</button>
+    </form>
+
+    <script>
+        function search() {
+            var query = document.getElementById('searchQuery').value;
+            var selectedEngine = document.getElementById('searchEngine').value;
+
+            switch (selectedEngine) {
+                case 'duckduckgo':
+                    window.open('https://duckduckgo.com/?q=' + encodeURIComponent(query), '_blank');
+                    break;
+                case 'google':
+                    window.open('https://www.google.com/search?q=' + encodeURIComponent(query), '_blank');
+                    break;
+                case 'yahoo':
+                    window.open('https://search.yahoo.com/search?p=' + encodeURIComponent(query), '_blank');
+                    break;
+                case 'bing':
+                    window.open('https://www.bing.com/search?q=' + encodeURIComponent(query), '_blank');
+                    break;
+                default:
+                    alert('Invalid search engine selection');
+            }
+        }
+    </script>
+
+</body>
+</html>
